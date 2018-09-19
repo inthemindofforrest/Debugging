@@ -1,4 +1,4 @@
-﻿  Main.cpp
-c:\users\s189069\source\repos\debuggingexercise\debugging exercise\main.cpp(50): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\s189069\source\repos\debuggingexercise\debugging exercise\main.cpp(77): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+﻿  OtherFunctions.cpp
+  Source.cpp
+  Generating Code...
   Debugging Exercise.vcxproj -> C:\Users\s189069\source\repos\DebuggingExercise\x64\Debug\Debugging Exercise.exe

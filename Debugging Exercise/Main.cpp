@@ -28,7 +28,6 @@ bool SingleMarineAlive(Marine * squadArr, int Unit);
 bool SingleZerglingAlive(Zergling * swarmArr, int Unit);
 int GetNumberOfAliveMarines(Marine * squadArr, size_t arrSize);
 int GetNumberOfAliveZerglings(Zergling * swarmArr, size_t arrSize);
-void GetChar();
 
 int main()
 {
@@ -40,11 +39,12 @@ int main()
 
 	cout << "A squad of marines approaches a swarm of Zerglings and opens fire! The Zerglings charge!" << endl;
 	// Attack each other until only one team is left alive
-	while (marineAlive(squad, squadSize) || zerglingAlive(swarm, swarmSize)) // If anyone is left alive to fight . . .
+	while (marineAlive(squad, squadSize) && zerglingAlive(swarm, swarmSize)) // If anyone is left alive to fight . . .
 	{
+		system("CLS");
 		if (marineAlive(squad, squadSize)) // if there's at least one marine alive
 		{
-			
+			cout << "Marine: " << endl;
 			for (size_t i = 0; i < squadSize; i++) // go through the squad
 			{
 				if (SingleMarineAlive(squad, i)) //Check if current marine is alive
@@ -58,20 +58,23 @@ int main()
 						if (SingleZerglingAlive(swarm, i))
 						{
 							swarm[i].takeDamage(damage);
+							if (swarm[i].entity.health < 0)
+								swarm[i].entity.health = 0;
 							if (!swarm[i].entity.isAlive()) // if the zergling dies, it is marked as such
 							{
 								cout << "The zergling target dies" << endl;
-								cout << "There are " << GetNumberOfAliveZerglings(swarm, swarmSize) << " Zerglings left." << endl;
+								
 							}
 							break;
 						}
 					}
-					GetChar();
+					cout << "There are " << GetNumberOfAliveZerglings(swarm, swarmSize) << " Zerglings left." << endl;
 				}
 			}
 		}
 		if (zerglingAlive(swarm, swarmSize)) // if there's at least one zergling alive
 		{
+			cout << "Zergling: " << endl;
 			for (size_t i = 0; i < swarmSize; i++) // loop through zerglings
 			{
 				if (SingleZerglingAlive(swarm, i))
@@ -81,13 +84,16 @@ int main()
 					for (int j = 0; j < squadSize; j++)
 					{
 						squad[j].takeDamage(swarm[i].attack());
+						if (squad[j].entity.health < 0)
+							squad[j].entity.health = 0;
 						if (!squad[j].entity.isAlive())
 						{
 							cout << "The marine succumbs to his wounds." << endl;
-							cout << "There are " << GetNumberOfAliveMarines(squad, squadSize) << " marines left." << endl;
+							
 						}
-						GetChar();
+						
 					}
+					cout << "There are " << GetNumberOfAliveMarines(squad, squadSize) << " marines left." << endl;
 				}
 			}
 		}
@@ -97,13 +103,21 @@ int main()
 	cout << "The fight is over. ";
 	if (marineAlive(squad, squadSize))
 	{
+		cout << endl;
+		cout << endl;
 		cout << "The Marines win." << endl;
-		GetChar();
+		cout << endl;
+		cout << endl;
+		system("PAUSE");
 	} 
 	else 
 	{
+		cout << endl;
+		cout << endl;
 		cout << "The Zerg win." << endl;
-		GetChar();
+		cout << endl;
+		cout << endl;
+		system("PAUSE");
 	}
 }
 
@@ -176,11 +190,4 @@ int GetNumberOfAliveZerglings(Zergling * swarmArr, size_t arrSize)
 	}
 	return numberAlive;
 
-}
-
-void GetChar()
-{
-	//char Input = ' ';
-	//cin >> Input;
-	system("PAUSE");
 }

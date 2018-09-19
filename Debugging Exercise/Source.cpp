@@ -1,6 +1,7 @@
-\*MAIN
+/*
+MAIN
 
-/*Compile error
+Compile error
 
 Line 36 and 38
 Declare functions if they are below where they are going to be called from.
@@ -27,10 +28,10 @@ i's must be swarm[i]
 Line 59, 60
 squad.begin() must be squad[i]
 
-*\
 
 
-\*semantical error
+
+semantical error
 
 Line 79
 missing curly brace before the else
@@ -57,10 +58,10 @@ Loop through all Marines to attack first ALIVE one in the array
 
 
 
-*\
 
 
-\*Design error
+
+Design error
 
 Line 42
 check to see if that specific marine is alive
@@ -81,7 +82,7 @@ Line 158
 Gets the number of Zergling alive
 
 
-*\
+
 
 ENTITY
 
@@ -100,4 +101,4 @@ MARINE
 Entity entity;
 
 All instances of health in Zergling and Maring need to be entity.health
-*\
+*/
